@@ -30,15 +30,14 @@ node{
             def changingPermission='sudo chmod +x stopscript.sh'
             def scriptRunner='sudo ./stopscript.sh'           
             def dockerRun= "sudo docker run -p 8082:8080 -d --name ${dockerContainerName} ${dockerImageName}" 
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@15.206.198.206" 
-           /* withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'dpPWD')]) {
+            withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'dpPWD')]) {
                   sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@15.206.198.206" 
                   sh "sshpass -p ${dpPWD} scp -r stopscript.sh devops@15.206.198.206:/home/devops" 
                   sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@15.206.198.206 ${changingPermission}"
                   sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@15.206.198.206 ${scriptRunner}"
                   sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@15.206.198.206 ${dockerRun}"
             }
-            */
+            
       
       }
          
