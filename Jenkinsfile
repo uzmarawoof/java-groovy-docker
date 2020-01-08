@@ -16,6 +16,7 @@ node{
       
      stage('Build Docker Image'){
            sh "sudo systemctl start docker"
+           sh "sudo chmod 666 /var/run/docker.sock"
            sh "docker build -t ${dockerImageName} ."
       }  
    
