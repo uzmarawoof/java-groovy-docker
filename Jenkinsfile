@@ -15,12 +15,12 @@ node{
       }
       
      stage('Build Docker Image'){
-           sh "sudo systemctl start docker"
-           sh "sudo chmod 666 /var/run/docker.sock"
+           //sh "sudo systemctl start docker"
+           sh "sudo chmod 666 ./var/run/docker.sock"
            sh "docker build -t ${dockerImageName} ."
       }  
    
-      stage('Publish Docker Image'){
+      /*stage('Publish Docker Image'){
          withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerPWD')]) {
               sh "docker login -u rajnikhattarrsinha -p ${dockerPWD}"
          }
@@ -42,6 +42,7 @@ node{
             
       
       }
+      */
          
   }
       
