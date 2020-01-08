@@ -15,6 +15,7 @@ node{
       }
       
      stage('Build Docker Image'){
+           sh "sudo systemctl start docker"
            sh "docker build -t ${dockerImageName} ."
       }  
    
