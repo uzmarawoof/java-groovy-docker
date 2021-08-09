@@ -30,9 +30,9 @@ node('nod1')   {
             def changingPermission='sudo chmod +x stopscript.sh'
             def scriptRunner='sudo ./stopscript.sh'           
             def dockerRun= "sudo docker run -p 8082:8080 -d --name ${dockerContainerName} ${dockerImageName}" 
-            withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'dpPWD')]) {
-                  sh "sshpass -i ${jenkinsagent} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47" 
-                  sh "sshpass -i ${jenkinsagent} scp -r stopscript.sh ec2-user@13.127.81.47:/home/ec2-user" 
+            withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'jenkins')]) {
+                  sh "sshpass -i ${jenkins} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47" 
+                  sh "sshpass -i ${jenkins} scp -r stopscript.sh ec2-user@13.127.81.47:/home/ec2-user" 
                   sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47 ${changingPermission}"
                   sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47 ${scriptRunner}"
                   sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47 ${dockerRun}"
