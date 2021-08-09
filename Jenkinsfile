@@ -1,9 +1,7 @@
 node{
       def dockerImageName= 'intdoc89/javadedockerapp_$JOB_NAME:$BUILD_NUMBER'
       stage('SCM Checkout'){
-         git 'https://github.com/zafar90/java-groovy-docker.git'
-         withMaven {
-           sh "mvn clean verify"               
+         git 'https://github.com/zafar90/java-groovy-docker.git             
       }
       stage('Build'){
          // Get maven home path and build
