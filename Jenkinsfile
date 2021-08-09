@@ -5,12 +5,12 @@ node{
       }
       stage('Build'){
          // Get maven home path and build
-         def mvnHome =  tool name: 'Maven 3.5.4', type: 'maven'   
+         def mvnHome =  tool name: 'Maven 3.0.5', type: 'maven'   
          sh "${mvnHome}/bin/mvn package -Dmaven.test.skip=true"
       }       
      
      stage ('Test'){
-         def mvnHome =  tool name: 'Maven 3.5.4', type: 'maven'    
+         def mvnHome =  tool name: 'Maven 3.0.5', type: 'maven'    
          sh "${mvnHome}/bin/mvn verify; sleep 3"
       }
       
@@ -19,7 +19,7 @@ node{
       }  
    
       stage('Publish Docker Image'){
-         withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerPWD')]) {
+         withCredentials([string(credentialsId:zzx`3df  'dockerpwd', variable: 'dockerPWD')]) {
               sh "docker login -u intdoc89 -p ${dockerPWD}"
          }
         sh "docker push ${dockerImageName}"
