@@ -3,7 +3,8 @@ node{
       stage('SCM Checkout'){
          git 'https://github.com/zafar90/java-groovy-docker.git'
          withMaven {
-           sh "mvn clean verify"               
+           sh "mvn clean verify" 
+         }
       }     
      stage('Build Docker Image'){         
            sh "docker build -t ${dockerImageName} ."
