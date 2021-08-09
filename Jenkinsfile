@@ -11,7 +11,7 @@ node('nod1')   {
      
      stage ('Test'){
          //def mvnHome =  tool name: 'Maven-3.0.5-17', type: 'Apache'    
-         sh "/opt/maven/bin/mvn verify; sleep 3 -Dmaven.verify.skip=true"
+         sh "/opt/maven/bin/mvn verify; sleep 3"
       }
       
      stage('Build Docker Image'){         
