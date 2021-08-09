@@ -11,7 +11,7 @@ node{
      
      stage ('Test'){
          //def mvnHome =  tool name: 'Maven-3.0.5-17', type: 'Apache'    
-         sh "/usr/share/maven/bin/mvn verify; sleep 3 -Dmaven.test.skip=true"
+         sh "/usr/share/maven/bin/mvn verify; sleep 3 -Dmaven.verify.skip=true"
       }
       
      stage('Build Docker Image'){         
