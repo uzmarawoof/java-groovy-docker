@@ -6,7 +6,7 @@ node{
       stage('Build'){
          // Get maven home path and build
          //def mvnHome =  tool name: 'Maven-3.0.5-17', type: 'Apache'   
-         sh "/usr/share/maven/bin/mvn build"
+         def "/usr/share/maven/"
          sh "${mvnHome}/bin/mvn package -Dmaven.test.skip=true"
       }       
      
