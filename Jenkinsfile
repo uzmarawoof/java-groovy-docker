@@ -33,7 +33,7 @@ node('nod1')   {
             withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'jenkins')]) {
                   //sh "ssh -i ${jenkins} ssh -o StrictHostKeyChecking=no jenkins@13.127.81.47" 
                   //sh "ssh -i ${jenkins} scp -r stopscript.sh ec2-user@13.127.81.47:/home/ec2-user" 
-                    sh "cp -r stopscript.sh /home/ec2-user" 
+                    sh "sudo cp -r stopscript.sh /home/ec2-user" 
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47 ${changingPermission}"
                     sh "${changingPermission}"
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47 ${scriptRunner}"
