@@ -40,7 +40,7 @@ node('jenkins-slave')   {
                    //z sh "${scriptRunner}"
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47 ${dockerRun}"
                    //z sh "${dockerRun}"
-                  sh "kubectl apply -f app.yaml"
+                  sh "sudo kubectl apply -f app.yaml"
                     
             }
             
