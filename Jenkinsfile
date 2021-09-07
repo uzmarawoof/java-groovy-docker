@@ -1,4 +1,4 @@
-node('jenkins-slave')   {
+node('node1')   {
       def dockerImageName= 'intdoc89/javadedockerapp_$JOB_NAME:$BUILD_NUMBER'
       stage('SCM Checkout'){
          git 'https://github.com/zafar90/java-groovy-docker.git'          
@@ -33,14 +33,14 @@ node('jenkins-slave')   {
             withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'jenkins')]) {
                   //sh "ssh -i ${jenkins} ssh -o StrictHostKeyChecking=no jenkins@13.127.81.47" 
                   //sh "ssh -i ${jenkins} scp -r stopscript.sh ec2-user@13.127.81.47:/home/ec2-user" 
-                   //z sh "sudo cp -r stopscript.sh /home/ec2-user" 
+                    sh "sudo cp -r stopscript.sh /home/ubuntu" 
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47 ${changingPermission}"
-                   //z sh "${changingPermission}"
+                    sh "${changingPermission}"
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47 ${scriptRunner}"
-                   //z sh "${scriptRunner}"
+                    sh "${scriptRunner}"
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no ec2-user@13.127.81.47 ${dockerRun}"
-                   //z sh "${dockerRun}"
-                  sh "sudo kubectl apply -f app.yaml"
+                    sh "${dockerRun}"
+                  //sh "sudo kubectl apply -f app.yaml"
                     
             }
             
